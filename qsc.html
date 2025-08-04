@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QSC App - Material Calculator</title>
+    <link rel="stylesheet" href="qsc.css"> </head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-button">← Back to Home</a> <h1>Building Material Calculator (QSC)</h1>
+
+        <div class="calculator-section">
+            <label for="materialType">Select Material:</label>
+            <select id="materialType">
+                <option value="concrete">Concrete</option>
+                <option value="bricks">Bricks</option>
+                </select>
+        </div>
+
+        <div id="concreteInputs" class="material-inputs">
+            <h2>Concrete Volume Calculation</h2>
+            <div class="input-group">
+                <label for="length">Length (m):</label>
+                <input type="number" id="length" step="0.01" min="0" placeholder="e.g., 5.0">
+            </div>
+            <div class="input-group">
+                <label for="width">Width (m):</label>
+                <input type="number" id="width" step="0.01" min="0" placeholder="e.g., 3.0">
+            </div>
+            <div class="input-group">
+                <label for="height">Height / Depth (m):</label>
+                <input type="number" id="height" step="0.01" min="0" placeholder="e.g., 0.15">
+            </div>
+            <div class="input-group">
+                <label for="concreteMix">Concrete Mix Ratio (e.g., 1:2:4):</label>
+                <input type="text" id="concreteMix" value="1:2:4" placeholder="e.g., 1:2:4">
+            </div>
+            <div class="input-group">
+                <label for="wasteFactor">Waste Factor (%):</label>
+                <input type="number" id="wasteFactor" step="0.1" min="0" max="100" value="5">
+            </div>
+        </div>
+
+        <div id="brickInputs" class="material-inputs hidden">
+            <h2>Brickwork Calculation</h2>
+            <div class="input-group">
+                <label for="brickWallLength">Wall Length (m):</label>
+                <input type="number" id="brickWallLength" step="0.01" min="0" placeholder="e.g., 10.0">
+            </div>
+            <div class="input-group">
+                <label for="brickWallHeight">Wall Height (m):</label>
+                <input type="number" id="brickWallHeight" step="0.01" min="0" placeholder="e.g., 3.0">
+            </div>
+            <div class="input-group">
+                <label for="brickWallThickness">Wall Thickness (m) - 0.1m or 0.2m for single/double brick:</label>
+                <input type="number" id="brickWallThickness" step="0.01" min="0" placeholder="e.g., 0.1">
+            </div>
+            <div class="input-group">
+                <label for="mortarMix">Mortar Mix Ratio (e.g., 1:4 Cement:Sand):</label>
+                <input type="text" id="mortarMix" value="1:4" placeholder="e.g., 1:4">
+            </div>
+            <div class="input-group">
+                <label for="brickSizeLength">Standard Brick Length (m):</label>
+                <input type="number" id="brickSizeLength" step="0.001" min="0" value="0.190" placeholder="e.g., 0.190">
+            </div>
+            <div class="input-group">
+                <label for="brickSizeWidth">Standard Brick Width (m):</label>
+                <input type="number" id="brickSizeWidth" step="0.001" min="0" value="0.090" placeholder="e.g., 0.090">
+            </div>
+            <div class="input-group">
+                <label for="brickSizeHeight">Standard Brick Height (m):</label>
+                <input type="number" id="brickSizeHeight" step="0.001" min="0" value="0.090" placeholder="e.g., 0.090">
+            </div>
+            <div class="input-group">
+                <label for="mortarJointThickness">Mortar Joint Thickness (m):</label>
+                <input type="number" id="mortarJointThickness" step="0.001" min="0" value="0.010" placeholder="e.g., 0.010">
+            </div>
+            <div class="input-group">
+                <label for="brickWasteFactor">Waste Factor (%):</label>
+                <input type="number" id="brickWasteFactor" step="0.1" min="0" max="100" value="5">
+            </div>
+        </div>
+
+        <button id="calculateBtn" class="primary-button-green">Calculate Materials</button>
+        
+        <button id="goToFloorPlanBtn" class="primary-button" style="margin-top: 15px;">Go to Floor Plan Designer</button>
+
+
+        <div class="save-project-section calculator-section">
+            <h2>Save Project</h2>
+            <div class="input-group">
+                <label for="projectNameInput">Project Name:</label>
+                <input type="text" id="projectNameInput" placeholder="e.g., My New House Phase 1">
+            </div>
+            <button id="saveProjectBtn" class="save-button">Save Current Project</button>
+            <div id="saveMessage" class="message-area"></div>
+        </div>
+
+        <button id="startNewProjectBtn" class="primary-button">Start New Project</button>
+        
+        <div id="projectCalculationsSection" class="calculator-section hidden">
+            <h2>Calculations in Current Project (<span id="currentProjectCalculationsCount">0</span>)</h2>
+            <div id="projectCalculationsList">
+                <p>No calculations added yet for this project.</p>
+            </div>
+            <div class="project-calculations-actions">
+                <button id="addCalculationToProjectBtn" class="add-button">Add Current to Project</button>
+                <button id="clearCurrentFormBtn" class="secondary-button">Clear Form for New Calculation</button>
+            </div>
+            <div id="calculationsListMessage" class="message-area"></div>
+        </div>
+
+        <div class="load-project-section calculator-section">
+            <h2>Load Project</h2>
+            <select id="projectList" class="input-group">
+                <option value="">-- Select a Project --</option>
+            </select>
+            <button id="loadProjectBtn" class="load-button">Load Selected Project</button>
+            <button id="refreshProjectsBtn" class="secondary-button" style="margin-top:10px;">Refresh Project List</button>
+            <button id="deleteProjectBtn" class="delete-button-red" style="margin-top:10px;">Delete Selected Project</button>
+            <div id="loadMessage" class="message-area"></div>
+        </div>
+
+        <div class="results-section">
+            <h2>Calculation Results</h2>
+            <div id="results">
+                </div>
+        </div>
+        <button id="generateReportBtn" class="primary-button-green" style="margin-top: 25px;">Generate Project Report</button>
+        <button id="generatePDFReportBtn" class="save-button" style="margin-top: 10px;">Generate PDF Report</button>
+    </div>
+
+    <script src="qsc.js"></script> </body>
+</html>
