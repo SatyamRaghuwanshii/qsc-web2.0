@@ -1,0 +1,492 @@
+/* QSC-WEB/frontend/qsc.css */
+
+/* General Body and Layout */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f0f2f5; /* Light grey background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0; /* Reset margin */
+    padding: 20px; /* Add some overall padding */
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Main Container (for qsc.html) */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px; /* Slightly more rounded */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Softer, more spread out shadow */
+    width: 100%;
+    max-width: 700px; /* Slightly wider max-width for content */
+    margin: 30px auto; /* Center with top/bottom margin */
+    transition: all 0.3s ease-in-out; /* Smooth transitions for container changes */
+}
+
+/* Headings */
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px; /* More space below headings */
+    font-weight: 700; /* Bolder headings */
+}
+h1 {
+    font-size: 2.2em;
+    padding-top: 10px; /* Space from top edge */
+}
+h2 {
+    font-size: 1.6em;
+    color: #3f51b5; /* Primary accent color for section headings */
+}
+
+/* Calculator Sections (cards) */
+.calculator-section {
+    margin-bottom: 25px;
+    padding: 25px; /* More padding inside sections */
+    border: 1px solid #e0e0e0; /* Lighter border */
+    border-radius: 10px; /* Rounded corners for sections */
+    background-color: #fefefe; /* Near white background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for each section */
+    transition: all 0.2s ease-in-out;
+}
+.calculator-section:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Lift effect on hover */
+}
+
+/* Specific Material Inputs Section Colors */
+.material-inputs {
+    background-color: #e8f5e9; /* Light green for calculation inputs */
+    border-color: #c8e6c9;
+}
+
+/* Input Groups */
+.input-group {
+    margin-bottom: 20px; /* More space between input groups */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px; /* More space below label */
+    font-weight: 600; /* Semi-bold labels */
+    color: #3f51b5; /* Consistent accent for labels */
+}
+
+.input-group input[type="number"],
+.input-group input[type="text"],
+select {
+    width: calc(100% - 24px); /* Account for padding + border */
+    padding: 12px; /* More padding in inputs */
+    border: 1px solid #c0c0c0; /* Softer border color */
+    border-radius: 8px; /* Rounded inputs */
+    font-size: 1em;
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06); /* Subtle inner shadow */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-group input[type="number"]:focus,
+.input-group input[type="text"]:focus,
+select:focus {
+    border-color: #3f51b5; /* Highlight on focus */
+    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.2); /* Glow effect on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Buttons - Base Styles */
+button {
+    display: block;
+    width: 100%;
+    padding: 15px; /* More padding for all buttons */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded buttons */
+    font-size: 1.1em; /* Consistent font size */
+    font-weight: 600; /* Semi-bold */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 15px; /* Default margin for buttons */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+button:hover {
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+button:active {
+    transform: translateY(0); /* Press effect */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific Button Colors */
+.primary-button-green { /* Calculate Materials */
+    background-color: #4CAF50; /* Green */
+}
+.primary-button-green:hover {
+    background-color: #43A047;
+}
+
+.save-button { /* Save Current Project */
+    background-color: #2196F3; /* Blue */
+}
+.save-button:hover {
+    background-color: #1976D2;
+}
+
+.primary-button { /* Start New Project */
+    background-color: #673AB7; /* Purple */
+}
+.primary-button:hover {
+    background-color: #512DA8;
+}
+
+.secondary-button { /* Clear Form, Refresh List */
+    background-color: #9C27B0; /* Another shade of purple */
+    padding: 10px; /* Slightly smaller padding */
+    font-size: 0.95em; /* Slightly smaller font */
+}
+.secondary-button:hover {
+    background-color: #7B1FA2;
+}
+
+.load-button { /* Load Selected Project */
+    background-color: #FF9800; /* Orange */
+}
+.load-button:hover {
+    background-color: #FB8C00;
+}
+
+.delete-button-red { /* Delete Selected Project */
+    background-color: #F44336; /* Red */
+}
+.delete-button-red:hover {
+    background-color: #D32F2F;
+}
+
+.add-button { /* Add Current to Project */
+    background-color: #00BCD4; /* Cyan */
+    font-size: 1em;
+    padding: 12px;
+}
+.add-button:hover {
+    background-color: #0097A7;
+}
+
+/* Messages & Errors */
+.error-message {
+    color: #D32F2F;
+    font-weight: 600;
+    margin-top: 15px;
+    background-color: #FFEBEE; /* Light red background */
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #EF9A9A;
+    text-align: center;
+}
+
+.message-area {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.message-area.success {
+    background-color: #E8F5E9; /* Light green */
+    color: #388E3C;
+    border: 1px solid #A5D6A7;
+}
+
+.message-area.error {
+    background-color: #FFEBEE; /* Light red */
+    color: #D32F2F;
+    border: 1px solid #EF9A9A;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Project Calculations List Styling */
+#projectCalculationsSection {
+    background-color: #e3f2fd; /* Lighter blue background */
+    border-color: #bbdefb;
+}
+
+#projectCalculationsList {
+    margin-top: 15px;
+    max-height: 320px; /* Slightly more height */
+    overflow-y: auto;
+    border: 1px solid #cfd8dc; /* Softer border */
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fcfdff; /* Near white */
+}
+
+.calculation-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px; /* More padding */
+    margin-bottom: 8px; /* More space between items */
+    background-color: #e1f5fe; /* Lighter blue item background */
+    border: 1px solid #b3e5fc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calculation-item:hover {
+    background-color: #b3e5fc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* subtle lift on hover */
+}
+
+.calculation-item.selected {
+    border: 2px solid #2196F3; /* Bright blue highlight */
+    background-color: #90CAF9; /* Darker blue background when selected */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calculation-item-info {
+    flex-grow: 1;
+    font-size: 0.95em;
+    color: #455A64; /* Darker text for info */
+    margin-right: 15px;
+    word-break: break-word;
+}
+.calculation-item-info strong {
+    color: #303F9F; /* Darker blue for strong text */
+}
+
+.calculation-item-actions {
+    display: flex;
+    gap: 8px; /* More space between action buttons */
+}
+
+.calculation-item-actions button {
+    margin-top: 0; /* Override default button margin */
+    padding: 6px 12px; /* Slightly more padding for action buttons */
+    font-size: 0.85em;
+    font-weight: 500;
+    border-radius: 6px;
+    box-shadow: none; /* No individual shadow for these small buttons */
+}
+.calculation-item-actions button:hover {
+    transform: translateY(-1px); /* Slight lift */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.calculation-item-actions .edit-btn {
+    background-color: #FFC107; /* Amber */
+    color: #424242;
+}
+.calculation-item-actions .edit-btn:hover {
+    background-color: #FFB300;
+}
+
+.calculation-item-actions .delete-btn {
+    background-color: #F44336; /* Red */
+    color: white;
+}
+.calculation-item-actions .delete-btn:hover {
+    background-color: #D32F2F;
+}
+
+.project-calculations-actions {
+    margin-top: 20px; /* More space */
+    display: flex;
+    gap: 15px; /* More space between buttons */
+    flex-wrap: wrap;
+}
+.project-calculations-actions button {
+    flex-grow: 1; /* Allow buttons to grow */
+    min-width: 180px; /* Ensure they don't get too small */
+}
+
+/* Summary Box Styling */
+.summary-box {
+    background-color: #E8F5E9; /* Light green */
+    border: 1px solid #A5D6A7;
+    padding: 20px; /* More padding */
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.summary-box h3 {
+    text-align: center;
+    color: #388E3C; /* Dark green for summary heading */
+    font-size: 1.8em; /* Larger summary heading */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.summary-box p {
+    font-size: 1.05em;
+    margin-bottom: 8px;
+    color: #455A64;
+}
+.summary-box .small-text {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 15px;
+    text-align: center;
+}
+.calculation-detail {
+    border: 1px dashed #C5E1A5; /* Lighter dashed border */
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background-color: #fcfdfc;
+}
+.calculation-detail h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #558B2F; /* Greenish heading */
+    font-size: 1.3em;
+    font-weight: 600;
+}
+.calculation-detail p {
+    margin-bottom: 5px;
+    font-size: 0.95em;
+    color: #546E7A;
+}
+
+/* Navigation button (for back to home) */
+.nav-button {
+    background-color: #546E7A; /* Darker grey-blue for navigation */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 25px; /* Space from top heading */
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.nav-button:hover {
+    background-color: #455A64;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Floor Plan Designer specific styles */
+.designer-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 900px; /* Wider for canvas */
+    margin: 30px auto;
+    transition: all 0.3s ease-in-out;
+}
+.designer-controls {
+    margin-bottom: 25px;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fefefe;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.drawing-canvas-container {
+    margin-top: 25px;
+    border: 2px solid #3f51b5;
+    border-radius: 8px;
+    background-color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+#designerCanvas {
+    display: block;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    max-width: 100%; /* Ensure canvas is responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .container, .designer-container {
+        padding: 20px;
+        margin: 15px auto;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    .calculator-section {
+        padding: 20px;
+    }
+    button {
+        padding: 12px;
+        font-size: 1em;
+    }
+    .project-calculations-actions button {
+        min-width: unset; /* Allow buttons to shrink */
+        flex-basis: 48%; /* Roughly two columns */
+        font-size: 0.9em;
+        padding: 8px;
+    }
+    .calculation-item {
+        flex-direction: column; /* Stack info and buttons */
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .calculation-item-actions {
+        width: 100%;
+        justify-content: flex-end; /* Push buttons to right */
+    }
+    .summary-box h3 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container, .designer-container {
+        margin: 10px auto;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    .input-group input[type="number"],
+    .input-group input[type="text"],
+    select {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    button {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .add-button, .secondary-button {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+    .project-calculations-actions button {
+        flex-basis: 100%; /* Stack all buttons */
+    }
+}
+
+/* NEW Styles for Generated Elements Section in Floor Plan Designer */
+.generated-elements-section {
+    margin-top: 25px; /* Consistent spacing */
+    background-color: #fce4ec; /* Light pink background */
+    border-color: #f8bbd0;
+}

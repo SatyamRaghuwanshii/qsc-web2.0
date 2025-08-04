@@ -1,0 +1,155 @@
+/* QSC-WEB/frontend/home.css */
+
+/* General Body and Layout */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top to allow full height hero */
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+    background-color: #f4f7f6; /* A neutral background for the whole page */
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 1200px; /* Max width for content to keep it readable */
+    margin: 0 auto; /* Center the wrapper */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* Subtle shadow for overall app */
+    min-height: 100vh;
+    background-color: #ffffff; /* White background for the main content area */
+}
+
+/* Hero Section Styling */
+.hero-section {
+    background: linear-gradient(to right bottom, #673AB7, #4527A0); /* Deep purple gradient */
+    color: white;
+    padding: 80px 20px; /* Generous padding */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* Minimum height for hero section */
+}
+
+.hero-content {
+    max-width: 800px; /* Max width for hero text */
+    margin: 0 auto;
+    animation: fadeInSlideUp 0.8s ease-out forwards; /* Animation for hero content */
+}
+
+.hero-section h1 {
+    font-size: 3.5em; /* Larger, more impactful heading */
+    font-weight: 800; /* Extra bold */
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.tagline {
+    font-size: 1.4em;
+    font-weight: 300; /* Lighter font weight for taglines */
+    margin-bottom: 40px; /* More space before buttons */
+    opacity: 0.9;
+}
+
+/* Button Container (Side-by-Side Arrangement) */
+.home-buttons {
+    display: flex;
+    flex-direction: row; /* Buttons side-by-side */
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+/* Base Button Styling - now applied to .home-button */
+.home-button {
+    flex-grow: 0; /* Prevent buttons from growing equally */
+    flex-shrink: 0; /* Prevent buttons from shrinking too much */
+    min-width: 250px; /* Minimum width for buttons */
+    padding: 18px 30px;
+    font-size: 1.25em; /* Adjusted slightly smaller to fit side-by-side better */
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific Button Colors & Hover Effects */
+.home-button.qsc-calc {
+    background-color: #4CAF50; /* Vibrant green */
+}
+.home-button.qsc-calc:hover {
+    background-color: #43A047;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.home-button.floor-plan {
+    background-color: #2196F3; /* Bright blue */
+}
+.home-button.floor-plan:hover {
+    background-color: #1976D2;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Footer Styling */
+.app-footer {
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 50px; /* Space above footer */
+    font-size: 0.9em;
+    color: #777;
+    border-top: 1px solid #eee; /* Subtle separator */
+}
+
+/* Animation for initial load */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 15px;
+        min-height: 40vh;
+    }
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+    .tagline {
+        font-size: 1.2em;
+    }
+    .home-buttons {
+        flex-direction: column; /* Stack buttons on smaller screens */
+        align-items: center; /* Center stacked buttons */
+    }
+    .home-button {
+        min-width: 80%; /* Make stacked buttons fill more width */
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2em;
+    }
+    .tagline {
+        font-size: 1em;
+    }
+}

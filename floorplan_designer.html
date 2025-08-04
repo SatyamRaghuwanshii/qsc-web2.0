@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Floor Plan Designer</title>
+    <link rel="stylesheet" href="qsc.css">
+    <link rel="stylesheet" href="floorplan.css">
+</head>
+<body>
+    <div class="main-designer-wrapper">
+        <a href="index.html" class="nav-button">← Back to Home</a>
+        <div class="designer-header">
+            <h1>Interactive Floor Plan Designer</h1>
+            <div class="designer-actions">
+                <button id="exportToQSCBtn" class="add-button">Export Dimensions to QSC</button>
+            </div>
+        </div>
+
+        <div class="designer-main">
+            <div class="designer-tools-sidebar">
+                <div class="tool-section">
+                    <h3>Build Tools</h3>
+                    <button id="drawWallTool" class="tool-button active">Draw Walls</button>
+                    <button id="selectTool" class="tool-button">Select/Move</button>
+                    <button id="deleteBtn" class="tool-button delete-button">Delete</button>
+                    <button id="copyBtn" class="tool-button copy-button">Copy</button>
+                    <button id="rotateBtn" class="tool-button rotate-button">Rotate 90°</button>
+                </div>
+                <div class="tool-section">
+                    <h3>Wall Properties</h3>
+                    <div class="input-group">
+                        <label for="wallThickness">Thickness (m):</label>
+                        <input type="number" id="wallThickness" step="0.01" min="0.05" value="0.15">
+                    </div>
+                </div>
+            </div>
+
+            <div class="designer-canvas-area">
+                <div id="designerCanvasContainer">
+                    <canvas id="designerCanvas"></canvas>
+                </div>
+                <div class="status-bar">
+                    <span id="coordinatesDisplay">X: 0.00m, Y: 0.00m</span>
+                    <span id="statusMessage">Ready to draw walls.</span>
+                </div>
+            </div>
+
+            <div class="designer-details-sidebar">
+                <div class="details-section">
+                    <h3>Drawn Elements (<span id="drawnElementsCount">0</span>)</h3>
+                    <div id="drawnElementsList" class="details-panel">
+                        <p>No elements drawn yet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="floorplan_script.js"></script>
+</body>
+</html>
