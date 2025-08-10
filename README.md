@@ -55,7 +55,7 @@ This is a web application designed to assist in civil engineering and constructi
         ```dotenv
         PORT=5000
         MONGODB_URI=mongodb://localhost:27017/qsc_app
-        GOOGLE_API_KEY=your_google_api_key
+       
         ```
     * Start the backend server:
         ```bash
